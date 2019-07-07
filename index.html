@@ -7,14 +7,58 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      padding-left: 100px;
+      height: 500px;  /* The height is 400 pixels */
+      width: 100%;  /* The width is the width of the web page */
+     }
+
+  </style>
 </head>
 <body>
     
 <div class="jumbotron vertical-center"> 
-    <div class="container">
+    <div class="container" style="text-align: center">
         <h1>Map of birthplaces of NBA players.</h1>
         <p>This map contains blablabla. You can blablabla.</p>           
     </div>
+
+
 </div>
+<!--Google map-->
+
+
+<!--The div element for the map -->
+<div class="container">
+<div class= "row">
+    <div class = "col-sm-12">
+            <h3 style="text-align: center">The map</h3>
+        <div id="map" style="align-content: center" >
+        </div>
+    </div>
+</div>
+</div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRInLY83HIcmFNMG-OIbrL1mmqwj09cyc&callback=initMap">
+    </script>
 </body>
 </html>
