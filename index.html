@@ -76,6 +76,7 @@
     <script>
     $(document).ready(function(){
         $(".ui-rangeslider").attr('onmouseup',"setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))")
+        $(".ui-rangeslider").attr('ontouchend',"setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))")
     });
     </script>
     <script async defer
