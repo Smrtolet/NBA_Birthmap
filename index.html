@@ -7,58 +7,80 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css">  
+  <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.js"></script>
+  <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script>
   <style>
-    /* Set the size of the div element that contains the map */
+
     #map {
-      padding-left: 100px;
-      height: 500px;  /* The height is 400 pixels */
-      width: 100%;  /* The width is the width of the web page */
+        margin-top: 20px;
+      height: 530px;  
+      width: 100%;  
      }
+    form  {
+        margin: 15px 0 0 0 !important;
+    }
+ 
+
 
   </style>
 </head>
 <body>
     
-<div class="jumbotron vertical-center"> 
-    <div class="container" style="text-align: center">
-        <h1>Map of birthplaces of NBA players.</h1>
-        <p>This map contains blablabla. You can blablabla.</p>           
+<div class="jumbotron vertical-center" style="background-color:#004fa7;border-style:solid;border-width: 5px;border-color: rgb(97, 20, 20)"> 
+    <div class="container">
+        <h1 style="text-align: center; color: #ffffff;">NBA players birthplace map</h1>
+             
     </div>
 
 
 </div>
-<!--Google map-->
-
-
-<!--The div element for the map -->
 <div class="container">
+    <div class= "row" style="margin-top:-30px;">
+            <div class = "col-sm-12">
+            <h3 style="text-align: center">This map helps visualize where NBA players through history were born. You can restrict the range of birth years to only see players born in the specified range.
+            </h3>   
+            </div>
+
+    </div>
 <div class= "row">
+    
     <div class = "col-sm-12">
-            <h3 style="text-align: center">The map</h3>
-        <div id="map" style="align-content: center" >
-        </div>
+         
+        
+        <div id="map" style="align-content: center" ></div>
+    </div>
+<div class= "row"> 
+    <div class = "col-sm-4"></div>
+    <div class = "col-sm-4">
+    <form >
+            <div data-role="rangeslider">
+                  
+                <label for="minYear" style="text-align: center">Birthyear from-to:</label>          
+                <input type="range" name="minYear" id="minYear" min="1900" max="2000" value="1950" data-popup-enabled="true" onmouseup="setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))" ontouchend="setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))">
+                <input type="range" name="maxYear" id="maxYear" min="1900" max="2000" value="2000" data-popup-enabled="true" onmouseup="setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))" ontouchend="setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))">
+            </div>
+    </form>
     </div>
 </div>
+
 </div>
+</div>
+
+
+    <script
+        src="./javascript_code.js">
+    </script>
+    
     <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
+    $(document).ready(function(){
+        $(".ui-rangeslider").attr('onmouseup',"setCenterAndCall(parseInt(minYear.value),parseInt(maxYear.value))")
+    });
     </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRInLY83HIcmFNMG-OIbrL1mmqwj09cyc&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAEqfGQt_9hI-4cKOW6JTUinmtJz-rIrk&libraries=visualization&callback=initMap">
     </script>
+    
 </body>
 </html>
